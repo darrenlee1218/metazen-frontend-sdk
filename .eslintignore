@@ -1,0 +1,22 @@
+##################################
+#### ------------------------ ####
+####  ESLINTIGNORE            ####
+####  v1.0.1                  ####
+#### ------------------------ ####
+##################################
+
+built/
+node_modules/
+test/
+cypress/
+
+*.svg
+*.css
+*.snap
+*.sh
+*stories.tsx
+KeyCloakOidcConfig.ts
+rollup.config.js
+reportWebVitals.js
+config-overrides.js
+setupTests.js

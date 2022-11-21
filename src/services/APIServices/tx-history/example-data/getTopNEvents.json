@@ -1,0 +1,270 @@
+{
+  "jsonrpc": "2.0",
+  "id": "2",
+  "result": [
+    {
+      "traceID": "504",
+      "chainId": "bombay-12",
+      "block": "0x1234567",
+      "blockTimestamp": "2022-04-21T21:35:59.999",
+      "from": "fromAddress4",
+      "to": "toAddress1",
+      "hash": "",
+      "ticker": "TERRA",
+      "value": "0x1234",
+      "gas": {
+        "ticker": "TERRA",
+        "estimate": "0x1234",
+        "fee": "0x1234"
+      },
+      "memo": "abc",
+      "contract": {
+        "address": "0xc0617ac1add7e22",
+        "spec": "ERC20",
+        "methodName": "",
+        "methodParams": {
+          "from": "0x0123456789012345678901234567890123456789",
+          "to": "0x1234567890123456789012345678901234567890"
+        }
+      },
+      "internal": true,
+      "status": "Authorizing",
+      "statusCode": "0",
+      "blockTime": "2022-04-21T21:35:59.999",
+      "transactionType": "transfer",
+      "relevantAddresses": ["0x1234567890123456789012345678901234567890", "0x0123456789012345678901234567890123456789"],
+      "confirmationsN": 0
+    },
+    {
+      "traceID": "501",
+      "chainId": "bombay-12",
+      "block": "0x1234567",
+      "blockTimestamp": "2022-04-21T21:35:59.999",
+      "from": "fromAddress1",
+      "to": "toAddress1",
+      "hash": "",
+      "ticker": "TERRA",
+      "value": "0x1234",
+      "gas": {
+        "ticker": "TERRA",
+        "estimate": "0x1234",
+        "fee": "0x1234"
+      },
+      "memo": "abc",
+      "contract": {
+        "address": "0xc0617ac1add7e22",
+        "spec": "ERC20",
+        "methodName": "",
+        "methodParams": {
+          "from": "0x0123456789012345678901234567890123456789",
+          "to": "0x1234567890123456789012345678901234567890"
+        }
+      },
+      "internal": true,
+      "status": "Authorizing",
+      "statusCode": "0",
+      "blockTime": "2022-04-21T21:35:59.999",
+      "transactionType": "transfer",
+      "relevantAddresses": ["0x1234567890123456789012345678901234567890", "0x0123456789012345678901234567890123456789"],
+      "confirmationsN": 0
+    },
+    {
+      "traceID": "204",
+      "chainId": "bombay-12",
+      "block": "0x1234567",
+      "blockTimestamp": "2022-04-21T21:35:59.999",
+      "from": "fromAddress4",
+      "to": "toAddress1",
+      "hash": "",
+      "ticker": "TERRA",
+      "value": "0x1234",
+      "gas": {
+        "ticker": "TERRA",
+        "estimate": "0x1234",
+        "fee": "0x1234"
+      },
+      "memo": "abc",
+      "contract": {
+        "address": "0xc0617ac1add7e22",
+        "spec": "ERC20",
+        "methodName": "",
+        "methodParams": {
+          "from": "0x0123456789012345678901234567890123456789",
+          "to": "0x1234567890123456789012345678901234567890"
+        }
+      },
+      "internal": true,
+      "status": "Authorizing",
+      "statusCode": "0",
+      "blockTime": "2022-04-21T21:35:59.999",
+      "transactionType": "transfer",
+      "relevantAddresses": ["0x1234567890123456789012345678901234567890", "0x0123456789012345678901234567890123456789"],
+      "confirmationsN": 0
+    },
+    {
+      "traceID": "201",
+      "chainId": "bombay-12",
+      "block": "0x1234567",
+      "blockTimestamp": "2022-04-21T21:35:59.999",
+      "from": "fromAddress1",
+      "to": "toAddress1",
+      "hash": "",
+      "ticker": "TERRA",
+      "value": "0x1234",
+      "gas": {
+        "ticker": "TERRA",
+        "estimate": "0x1234",
+        "fee": "0x1234"
+      },
+      "memo": "abc",
+      "contract": {
+        "address": "0xc0617ac1add7e22",
+        "spec": "ERC20",
+        "methodName": "",
+        "methodParams": {
+          "from": "0x0123456789012345678901234567890123456789",
+          "to": "0x1234567890123456789012345678901234567890"
+        }
+      },
+      "internal": true,
+      "status": "Authorizing",
+      "statusCode": "0",
+      "blockTime": "2022-04-21T21:35:59.999",
+      "transactionType": "transfer",
+      "relevantAddresses": ["0x1234567890123456789012345678901234567890", "0x0123456789012345678901234567890123456789"],
+      "confirmationsN": 0
+    },
+    {
+      "traceID": "104",
+      "chainId": "bombay-12",
+      "block": "0x1234567",
+      "blockTimestamp": "2022-04-21T21:35:59.999",
+      "from": "fromAddress4",
+      "to": "toAddress1",
+      "hash": "",
+      "ticker": "TERRA",
+      "value": "0x1234",
+      "gas": {
+        "ticker": "TERRA",
+        "estimate": "0x1234",
+        "fee": "0x1234"
+      },
+      "memo": "abc",
+      "contract": {
+        "address": "0xc0617ac1add7e22",
+        "spec": "ERC20",
+        "methodName": "",
+        "methodParams": {
+          "from": "0x0123456789012345678901234567890123456789",
+          "to": "0x1234567890123456789012345678901234567890"
+        }
+      },
+      "internal": true,
+      "status": "Authorizing",
+      "statusCode": "0",
+      "blockTime": "2022-04-21T21:35:59.999",
+      "transactionType": "transfer",
+      "relevantAddresses": ["0x1234567890123456789012345678901234567890", "0x0123456789012345678901234567890123456789"],
+      "confirmationsN": 0
+    },
+    {
+      "traceID": "101",
+      "chainId": "bombay-12",
+      "block": "0x1234567",
+      "blockTimestamp": "2022-04-21T21:35:59.999",
+      "from": "fromAddress1",
+      "to": "toAddress1",
+      "hash": "",
+      "ticker": "TERRA",
+      "value": "0x1234",
+      "gas": {
+        "ticker": "TERRA",
+        "estimate": "0x1234",
+        "fee": "0x1234"
+      },
+      "memo": "abc",
+      "contract": {
+        "address": "0xc0617ac1add7e22",
+        "spec": "ERC20",
+        "methodName": "",
+        "methodParams": {
+          "from": "0x0123456789012345678901234567890123456789",
+          "to": "0x1234567890123456789012345678901234567890"
+        }
+      },
+      "internal": true,
+      "status": "Authorizing",
+      "statusCode": "0",
+      "blockTime": "2022-04-21T21:35:59.999",
+      "transactionType": "transfer",
+      "relevantAddresses": ["0x1234567890123456789012345678901234567890", "0x0123456789012345678901234567890123456789"],
+      "confirmationsN": 0
+    },
+    {
+      "traceID": "4",
+      "chainId": "bombay-12",
+      "block": "0x1234567",
+      "blockTimestamp": "2022-04-21T21:35:59.999",
+      "from": "fromAddress4",
+      "to": "toAddress1",
+      "hash": "",
+      "ticker": "TERRA",
+      "value": "0x1234",
+      "gas": {
+        "ticker": "TERRA",
+        "estimate": "0x1234",
+        "fee": "0x1234"
+      },
+      "memo": "abc",
+      "contract": {
+        "address": "0xc0617ac1add7e22",
+        "spec": "ERC20",
+        "methodName": "",
+        "methodParams": {
+          "from": "0x0123456789012345678901234567890123456789",
+          "to": "0x1234567890123456789012345678901234567890"
+        }
+      },
+      "internal": true,
+      "status": "Authorizing",
+      "statusCode": "0",
+      "blockTime": "2022-04-21T21:35:59.999",
+      "transactionType": "transfer",
+      "relevantAddresses": ["0x1234567890123456789012345678901234567890", "0x0123456789012345678901234567890123456789"],
+      "confirmationsN": 0
+    },
+    {
+      "traceID": "1",
+      "chainId": "bombay-12",
+      "block": "0x1234567",
+      "blockTimestamp": "2022-04-21T21:35:59.999",
+      "from": "fromAddress1",
+      "to": "toAddress1",
+      "hash": "",
+      "ticker": "TERRA",
+      "value": "0x1234",
+      "gas": {
+        "ticker": "TERRA",
+        "estimate": "0x1234",
+        "fee": "0x1234"
+      },
+      "memo": "abc",
+      "contract": {
+        "address": "0xc0617ac1add7e22",
+        "spec": "ERC20",
+        "methodName": "",
+        "methodParams": {
+          "from": "0x0123456789012345678901234567890123456789",
+          "to": "0x1234567890123456789012345678901234567890"
+        }
+      },
+      "internal": true,
+      "status": "Authorizing",
+      "statusCode": "0",
+      "blockTime": "2022-04-21T21:35:59.999",
+      "transactionType": "transfer",
+      "relevantAddresses": ["0x1234567890123456789012345678901234567890", "0x0123456789012345678901234567890123456789"],
+      "confirmationsN": 0
+    }
+  ]
+}

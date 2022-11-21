@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  gryfyn-wallet:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=development
+      - LOG_LEVEL=LOG_DEBUG
+      - REACT_APP_TITLE="Gryfyn Front-End Demo (powered by SDK)"
+      - REACT_APP_DESCRIPTION="GryFyn Front-End SDK with full web capabilities"
+      - REACT_APP_VERSION=$npm_package_version
+      - REACT_APP_DEV_MODE="DEVELOPMENT MODE"
+      - REACT_APP_PRO_MODE="PRODUCTION MODE"
+    command: npm run start
+    volumes:
+      - '.:/app:rw'
+    ports:
+      - 3000:3000

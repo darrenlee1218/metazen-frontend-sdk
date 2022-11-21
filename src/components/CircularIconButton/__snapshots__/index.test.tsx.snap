@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CircularIconButton renders icon, label 1`] = `
+<div
+  className="css-59ig29-MuiStack-root"
+>
+  <button
+    className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-fyntix-MuiButtonBase-root-MuiIconButton-root"
+    disabled={false}
+    onBlur={[Function]}
+    onContextMenu={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+  >
+    <div />
+  </button>
+  <p
+    className="MuiTypography-root MuiTypography-body1 css-jd9kvz-MuiTypography-root"
+  >
+    lbl
+  </p>
+</div>
+`;

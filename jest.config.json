@@ -1,0 +1,10 @@
+{
+  "collectCoverageFrom": ["src/**/*.js", "src/**/*.ts", "src/**/*.jsx", "src/**/*.tsx", "!**/node_modules/**"],
+  "coverageThreshold": {
+    "global": {
+      "lines": 5
+    }
+  },
+  "coverageReporters": ["html", "text", "text-summary", "cobertura"],
+  "testMatch": ["**/*.test.js", "**/*.test.ts", "**/*.test.jsx", "**/*.test.tsx"]
+}

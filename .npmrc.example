@@ -1,0 +1,6 @@
+registry=https://registry.hextech.io:443/
+always-auth=true
+//registry.hextech.io/:_authToken=<INSERT AUTH TOKEN HERE>
+@hextrust:registry=https://gitlab.int.hextech.io/api/v4/projects/688/packages/npm/
+//gitlab.int.hextech.io/api/v4/projects/688/packages/npm/:_authToken=<INSERT AUTH TOKEN HERE>
+always-auth=true

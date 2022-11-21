@@ -1,0 +1,1668 @@
+openapi: 3.0.0
+info:
+  title: sdk local mock server
+  version: 1.0.0
+paths:
+  /login/status:
+    get:
+      responses:
+        200:
+          description: login succeed
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                default: 'http://localhost:3000'
+            Access-Control-Allow-Credentials:
+              schema:
+                type: boolean
+                default: 'true'
+  /:
+    post:
+      parameters:
+        - in: header
+          name: X-Request-Id
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/mtz_bk_GetBalancesRequest'
+                - $ref: '#/components/schemas/assetMaster_getAssetsRequest'
+                - $ref: '#/components/schemas/mtz_evaluatorGetPricesRequest'
+                - $ref: '#/components/schemas/mtz_bk_GetBalanceByChainIdRequest'
+                - $ref: '#/components/schemas/mtz_tx_history_GetEventsByTxHashRequest'
+                - $ref: '#/components/schemas/mtz_tx_history_GetEventDetailsByTxHashRequest'
+                - $ref: '#/components/schemas/mtz_tx_history_GetTopNTransactionsRequest'
+                - $ref: '#/components/schemas/mtz_asset_metadata_cache_GetAssetMetadataRequest'
+                - $ref: '#/components/schemas/mtz_asset_metadata_cache_GetAssetMetadataBatchRequest'
+                - $ref: '#/components/schemas/mtz_bk_GetBalancesByAssetIdsRequest'
+                - $ref: '#/components/schemas/mtz_wallet_getOrCreateAddressesRequest'
+                - $ref: '#/components/schemas/mtz_asset_metadata_cache_UpdateAssetMetadataRequest'
+
+      responses:
+        '200':
+          description: response object
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/mtz_bk_GetBalancesResponse'
+                  - $ref: '#/components/schemas/assetMaster_getAssetsResponse'
+                  - $ref: '#/components/schemas/mtz_evaluatorGetPricesResponse'
+                  - $ref: '#/components/schemas/mtz_bk_GetBalanceByChainIdResponse'
+                  - $ref: '#/components/schemas/mtz_tx_history_GetEventsByTxHashResponse'
+                  - $ref: '#/components/schemas/mtz_tx_history_GetEventDetailsByTxHashResponse'
+                  - $ref: '#/components/schemas/mtz_tx_history_GetTopNTransactionsResponse'
+                  - $ref: '#/components/schemas/mtz_asset_metadata_cache_GetAssetMetadataResponse'
+                  - $ref: '#/components/schemas/mtz_asset_metadata_cache_GetAssetMetadataBatchResponse'
+                  - $ref: '#/components/schemas/mtz_bk_GetBalancesByAssetIdsResponse'
+                  - $ref: '#/components/schemas/mtz_wallet_getOrCreateAddressesResponse'
+                  - $ref: '#/components/schemas/mtz_asset_metadata_cache_UpdateAssetMetadataResponse'
+              examples:
+                mtz_evaluatorGetPrices:
+                  $ref: '#/components/examples/mtz_evaluatorGetPricesResponse'
+                mtz_bk_GetBalancesRequest:
+                  $ref: '#/components/examples/mtz_bk_GetBalancesResponse'
+                assetMaster_getAssets:
+                  $ref: '#/components/examples/assetMaster_getAssetsResponse'
+                mtz_tx_history_GetTopNTransactions:
+                  $ref: '#/components/examples/mtz_tx_history_GetTopNTransactionsResponse'
+                mtz_bk_GetBalanceByChainIdRequest:
+                  $ref: '#/components/examples/mtz_bk_GetBalanceByChainIdResponse'
+                mtz_asset_metadata_cache_GetAssetMetadata:
+                  $ref: '#/components/examples/mtz_asset_metadata_cache_GetAssetMetadataResponse'
+                mtz_asset_metadata_cache_GetAssetMetadataBatch:
+                  $ref: '#/components/examples/mtz_asset_metadata_cache_GetAssetMetadataBatchResponse'
+                mtz_bk_GetBalancesByAssetIdsRequest:
+                  $ref: '#/components/examples/mtz_bk_GetBalancesByAssetIdsResponse'
+                mtz_wallet_getOrCreateAddresses:
+                  $ref: '#/components/examples/mtz_wallet_getOrCreateAddressesResponse'
+                mtz_asset_metadata_cache_UpdateAssetMetadata:
+                  $ref: '#/components/examples/mtz_asset_metadata_cache_UpdateAssetMetadataResponse'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  examples:
+    mtz_asset_metadata_cache_UpdateAssetMetadataResponse:
+      value:
+        jsonrpc: '2.0'
+        id: '1'
+        result: null
+
+    mtz_wallet_getOrCreateAddressesResponse:
+      value:
+        jsonrpc: '2.0'
+        id: '0'
+        result:
+          [
+            { 'address': '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266', 'chain_id': '3' },
+            { 'address': '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266', 'chain_id': '4' },
+            { 'address': '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266', 'chain_id': '80001' },
+          ]
+
+    mtz_tx_history_GetTopNTransactionsResponse:
+      value:
+        jsonrpc: '2.0'
+        id: '0'
+        result:
+          [
+            {
+              'from': '0x0a48819d012cfb877630771c02fe859428820000',
+              'to': '0x8d06fb160b34fca27f37cf29a4d0efcc6bc9da1d',
+              'hash': '0x1295efc170be07536904c27ea6c7af8270cdb9a8b72e668651c9d4d7256abd21',
+              'createdAt': '2022-06-30T07:10:35.845Z',
+              'transactionType': 'deposit',
+              'secondaryTransactionStatus':'Declined',
+              'status': 'completed',
+              'value': '0x07021ed30b928000',
+              'assetTicker': '80001_MATIC',
+              'relevantAddress': ['0x8d06FB160B34FcA27F37cF29a4D0EFCc6bc9dA1d'],
+              'actionAddress': '0x8d06FB160B34FcA27F37cF29a4D0EFCc6bc9dA1d',
+              'chainId': '80001',
+              'spec': 'NATIVE',
+            },
+            {
+              'from': '0x0a48819D012cfb877630771C02Fe859428820000',
+              'to': '0x8d06fb160b34fca27f37cf29a4d0efcc6bc9da1d',
+              'hash': '0x81adb98433c38a2ab5dab9bb1fc27cfaf1b35be14ad93b7fc90c2b16cd55d181',
+              'createdAt': '2022-08-17T02:50:49.621Z',
+              'transactionType': 'deposit',
+               'secondaryTransactionStatus':'Detected',
+              'status': 'completed',
+              'value': '0x00',
+              'assetTicker': '',
+              'relevantAddress': ['0x8d06fb160b34fca27f37cf29a4d0efcc6bc9da1d'],
+              'actionAddress': '0x93aD74F4288312a620eDaBE756194A3F656c861A',
+              'chainId': '80001',
+              'spec': 'ERC-20',
+              'erc20':
+                {
+                  'tokenTransferred': '0x083d60',
+                  'decimal': 6,
+                  'assetKey': '80001_USDC_0xe6b8a5CF',
+                  'assetSymbol': 'USDC',
+                },
+            },
+            {
+              'from': '0x0a48819D012cfb877630771C02Fe859428820000',
+              'to': '0xF3B565D06A7bacD8ae960363331dCe229DC590b4',
+              'hash': '0xa436188fc069702e17ea82f8f9766103863a9dea3c60fc7463a8187495655adc',
+              'createdAt': '2022-08-24T07:15:49.103Z',
+              'transactionType': 'deposit',
+               'secondaryTransactionStatus':'Approving',
+              'status': 'completed',
+              'value': '0x00',
+              'assetTicker': '80001_MATIC',
+              'relevantAddress': ['0xF3B565D06A7bacD8ae960363331dCe229DC590b4'],
+              'actionAddress': '0xF3B565D06A7bacD8ae960363331dCe229DC590b4',
+              'chainId': '80001',
+              'spec': 'ERC-1155',
+              'contractAddress': '0x8995a88F5D5E5A214fC27D7bA002fB000177f7Bf',
+              'erc1155':
+                {
+                  'assetKey': '80001_DUSTP_0x8995a88F',
+                  'assetSymbol': 'DUSTP',
+                  'tokenID': '1',
+                  'contractAddress': '0x8995a88F5D5E5A214fC27D7bA002fB000177f7Bf',
+                  'tokenTransferred': '0x1',
+                  'data': '0x00',
+                },
+            },
+            {
+              'from': '0x0a48819D012cfb877630771C02Fe859428820000',
+              'to': '0xF3B565D06A7bacD8ae960363331dCe229DC590b4',
+              'hash': '0xa504344a21d312e451aa99db4f2841db446a437ae3d509c57f0db1d8e17042e2',
+              'createdAt': '2022-08-24T07:51:19.560Z',
+              'transactionType': 'deposit',
+               'secondaryTransactionStatus':'Detected',
+              'status': 'approved',
+              'value': '0x00',
+              'assetTicker': '80001_MATIC',
+              'relevantAddress': ['0xF3B565D06A7bacD8ae960363331dCe229DC590b4'],
+              'actionAddress': '0xF3B565D06A7bacD8ae960363331dCe229DC590b4',
+              'chainId': '80001',
+              'spec': 'ERC-721',
+              'contractAddress': '0x4Aa0CcCf4Ab16d593863efC05c79157eAaB0FA83',
+              'erc721':
+                {
+                  'assetKey': '80001_GNTTM_0x4Aa0CcCf',
+                  'assetSymbol': 'GNTTM',
+                  'owner': '0xF3B565D06A7bacD8ae960363331dCe229DC590b4',
+                  'tokenID': '232131233213',
+                  'tokenURI': 'https://asset-token-metadata-stg.revvmotorsport.com/57910179610855900031866204803652725946568817000367758305397667012496444117182',
+                  'contractAddress': '0x4Aa0CcCf4Ab16d593863efC05c79157eAaB0FA83',
+                },
+            },
+          ]
+    mtz_asset_metadata_cache_GetAssetMetadataResponse:
+      value:
+        jsonrpc: '2.0'
+        id: '0'
+        result:
+          {
+            'symbol': 'REVVM',
+            'updatedTime': '2022-07-19T12:43:49.472Z',
+            'data': '{"core":{"chassisNumber":"29537","item":"1","livery":"47","handling":"100","acceleration":"100","topSpeed":"100","weight":"1464","year":"121","rarity":"5","class":"1","collection":"45","manufacturer":"1","type":"1","nfFlag":"1"},"type":"Car","manufacturer":"REVV Motorsport","collection":"Odaily","class":"Sports Saloon","rarity":"Common","year":2021,"racing_topSpeed":100,"racing_acceleration":100,"racing_handling":100,"name":"REVV Ambition","description":"The REVV Ambition is a Sports Saloon, with a balanced mix of speed, acceleration and handling. They are a solid choice for any driver getting started, and will be comfortable taking on any circuit. ","image":"https://ipfs-assets.animocabrands.com/REVV-1_1_1_47.png","id":"57910179610855902643140526721588920884948204639256480166906838582677720822625","attributes":[{"trait_type":"rarity","value":"Common"},{"trait_type":"class","value":"Sports Saloon"},{"trait_type":"manufacturer","value":"REVV Motorsport from REVV org"},{"trait_type":"type","value":"Car"},{"trait_type":"collection","value":"Odaily"},{"trait_type":"weight","value":"1464kg"},{"trait_type":"chassis_number","value":"29537"},{"display_type":"boost_number","trait_type":"top_speed","value":100,"max_value":1001},{"display_type":"boost_number","trait_type":"acceleration","value":500,"max_value":1001},{"display_type":"boost_number","trait_type":"handling","value":900,"max_value":1001}],"external_url":"https://revvracing.com"}',
+            'contractAddress': '0xa1a6bbb60bf86bd70060a303debe4633726cda55',
+            'owner': '0xd92d917554f2b53aaa6395722fe52cc5394ed183',
+            'tokenId': '107',
+            'chainId': '80001',
+            'tokenStandard': 'ERC-721',
+            'createdTime': '2022-07-21T12:43:49.472Z',
+          }
+    mtz_asset_metadata_cache_GetAssetMetadataBatchResponse:
+      value:
+        jsonrpc: '2.0'
+        id: '0'
+        result:
+          [
+            {
+              'updatedTime': '2022-07-19T12:43:49.472Z',
+              'data': '{"name": "SmartSeaFish", "description": "This is a collection of SmartSeaFish NFTs.", "image": "https://ipfs.io/ipfs/bafkreic3tnw26krh6vwixsnokv2pajlbnvsqpid6a4mlzx5viiybtit2em"}',
+              'contractAddress': '0xa1a6bbb60bf86bd70060a303debe4633726cda55',
+              'owner': '',
+              'tokenId': '178',
+              'chainId': '80001',
+              'tokenStandard': 'ERC-1155',
+              'symbol': 'SYN',
+              'createdTime': '2022-07-21T12:43:49.472Z',
+            },
+            {
+              'updatedTime': '2022-07-19T12:43:49.472Z',
+              'data': '{"core":{"chassisNumber":"29537","item":"1","livery":"47","handling":"100","acceleration":"100","topSpeed":"100","weight":"1464","year":"121","rarity":"5","class":"1","collection":"45","manufacturer":"1","type":"1","nfFlag":"1"},"type":"Car","manufacturer":"REVV Motorsport","collection":"Odaily","class":"Sports Saloon","rarity":"Common","year":2021,"racing_topSpeed":100,"racing_acceleration":100,"racing_handling":100,"name":"REVV Ambition","description":"The REVV Ambition is a Sports Saloon, with a balanced mix of speed, acceleration and handling. They are a solid choice for any driver getting started, and will be comfortable taking on any circuit. ","image":"https://ipfs-assets.animocabrands.com/REVV-1_1_1_47.png","id":"57910179610855902643140526721588920884948204639256480166906838582677720822625","attributes":[{"trait_type":"rarity","value":"Common"},{"trait_type":"class","value":"Sports Saloon"},{"trait_type":"manufacturer","value":"REVV Motorsport"},{"trait_type":"type","value":"Car"},{"trait_type":"collection","value":"Odaily"},{"trait_type":"weight","value":"1464kg"},{"trait_type":"chassis_number","value":"29537"},{"display_type":"boost_number","trait_type":"top_speed","value":100,"max_value":1001},{"display_type":"boost_number","trait_type":"acceleration","value":100,"max_value":1001},{"display_type":"boost_number","trait_type":"handling","value":100,"max_value":1001}],"external_url":"https://revvracing.com"}',
+              'contractAddress': '0xa1a6bbb60bf86bd70060a303debe4633726cda55',
+              'owner': '0x9bc2729c2cfdc94378a9adb681455d1d94c12c5f',
+              'tokenId': '180',
+              'chainId': '80001',
+              'tokenStandard': 'ERC-721',
+              'symbol': 'SYN',
+              'createdTime': '2022-07-20T12:43:49.472Z',
+            },
+          ]
+    mtz_bk_GetBalancesByAssetIdsResponse:
+      value:
+        jsonrpc: '2.0'
+        id: '0'
+        result:
+          [
+            {
+              'entityId': '8a218199-fb3b-4863-8013-a7d4b7c49f8b',
+              'chainId': '80001',
+              'assetId': '3_REVV_0x04DF9b0a',
+              'nftTokenId': '178',
+              'address': '0x9bc2729c2cfdc94378a9adb681455d1d94c12c5f',
+              'assetTicker': 'MATICmum',
+              'balance': '2',
+            },
+            {
+              'entityId': '8a218199-fb3b-4863-8013-a7d4b7c49f8b',
+              'chainId': '80001',
+              'assetId': '3_REVV_0x04DF9b0a',
+              'nftTokenId': '180',
+              'address': '0x9bc2729c2cfdc94378a9adb681455d1d94c12c5f',
+              'assetTicker': 'MATICmum',
+              'balance': '1',
+            },
+            {
+              'entityId': '8a218199-fb3b-4863-8013-a7d4b7c49f8b',
+              'chainId': '80001',
+              'assetId': '3_REVV_0x04DF9b0a',
+              'nftTokenId': '181',
+              'address': '0x9bc2729c2cfdc94378a9adb681455d1d94c12c5f',
+              'assetTicker': 'MATICmum',
+              'balance': '0',
+            },
+          ]
+    mtz_bk_GetBalanceByChainIdResponse:
+      value:
+        jsonrpc: '2.0'
+        id: '0'
+        result:
+          [
+            {
+              'entityId': '8a218199-fb3b-4863-8013-a7d4b7c49f8b',
+              'chainId': '80001',
+              'address': '0x9bc2729c2cfdc94378a9adb681455d1d94c12c5f',
+              'assetTicker': 'MATICmum',
+              'assetId': '80001_MATIC',
+              'balance': '20000000000000000000',
+            },
+            {
+              'entityId': '6e2b242f-778e-4e6b-ab97-d552415051b1',
+              'chainId': '80001',
+              'address': '0xfe9006f6cc319fc0ebba40cbd2d3e92a73c6ec3c',
+              'assetTicker': '80001_GNTTM_0x4Aa0CcCf',
+              'assetId': '80001_GNTTM_0x4Aa0CcCf',
+              'nftTokenId': '8171',
+              'balance': '1',
+            },
+            {
+              'entityId': '6e2b242f-778e-4e6b-ab97-d552415051b1',
+              'chainId': '80001',
+              'address': '0xfe9006f6cc319fc0ebba40cbd2d3e92a73c6ec3c',
+              'assetTicker': '80001_GNTTM_0x4Aa0CcCf',
+              'assetId': '80001_GNTTM_0x4Aa0CcCf',
+              'nftTokenId': '8172',
+              'balance': '1',
+            },
+          ]
+    mtz_bk_GetBalancesResponse:
+      value:
+        jsonrpc: '2.0'
+        id: '0'
+        result:
+          [
+            {
+              'entityId': '1',
+              'chainId': '80001',
+              'address': '0x64294A144ebA470764FF7dFC17369e4B05fCb005',
+              'assetTicker': '80001_MATIC',
+              'assetId': '80001_MATIC',
+              'balance': '900000000000000000000',
+            },
+            {
+              'entityId': '3',
+              'chainId': '4',
+              'address': '0x64294A144ebA470764FF7dFC17369e4B05fCb005',
+              'assetTicker': '4_ETH',
+              'assetId': '4_ETH',
+              'balance': '1000000000000000000',
+            },
+            {
+              'entityId': '4',
+              'chainId': '80001',
+              'address': '0x64294A144ebA470764FF7dFC17369e4B05fCb005',
+              'assetTicker': '80001_USDC_0xe6b8a5CF',
+              'assetId': '80001_USDC_0xe6b8a5CF',
+              'balance': '100000',
+            },
+            {
+              'entityId': '5',
+              'chainId': '80001',
+              'address': '0x64294A144ebA470764FF7dFC17369e4B05fCb005',
+              'assetTicker': '80001_REVV_0x736DF5c1',
+              'assetId': '80001_REVV_0x736DF5c1',
+              'balance': '10000000000000000',
+            },
+          ]
+    mtz_evaluatorGetPricesResponse:
+      value:
+        jsonrpc: '2.0'
+        id: '0'
+        result:
+          [
+            {
+              'assetKey': '80001_REVV_0x736DF5c1',
+              'chainID': '80001',
+              'assetTicker': 'REVV',
+              'sourceTicker': 'REVVPOS',
+              'price': '0.016918045',
+              'platformCurrency': 'MATIC',
+              'createdAt': '2022-10-05T14:51:39.222859771Z',
+              'source': 'Nomics'
+            },
+            {
+              'assetKey': '80001_MATIC',
+              'chainID': '80001',
+              'assetTicker': 'MATIC',
+              'sourceTicker': 'MATIC',
+              'price': '0.83349226',
+              'platformCurrency': 'MATIC',
+              'createdAt': '2022-10-05T14:51:39.222806005Z',
+              'source': 'Nomics'
+            }
+          ]
+    assetMaster_getAssetsResponse:
+      value:
+        jsonrpc: '2.0'
+        id: '0'
+        result:
+          {
+            'version': '0.0.3',
+            'data':
+              {
+                '3':
+                  {
+                    'chainName': 'Ropsten',
+                    'chainID': '3',
+                    'type': 'TESTNET',
+                    'minBlockConfirmation': 5,
+                    'smartContractUrl': 'https://ropsten.etherscan.io/token/',
+                    'addressUrl': 'https://ropsten.etherscan.io/address/',
+                    'txUrl': 'https://ropsten.etherscan.io/tx/',
+                    'network':
+                      {
+                        'chainalysisNetwork': 'Ethereum',
+                        'networkColor': '#627EEA',
+                        'pngNetworkIconUrl': 'https://hex-asset-icon.hextech.io/assets/png/ETH.png',
+                      },
+                    'native':
+                      {
+                        'key': '3_ETH',
+                        'displayName': 'Ethereum (Ropsten)',
+                        'gasLimit': '0x5208',
+                        'decimal': 18,
+                        'custodyPrecision': 8,
+                        'displayPrecision': 4,
+                        'ticker': 'ETH',
+                        'display':
+                          {
+                            'colorCode': '#627eea',
+                            'pngIconUrl': 'https://hex-asset-icon.hextech.io/assets/png/ETH.png',
+                            'svgIconUrl': 'https://hex-asset-icon.hextech.io/assets/svg/ETH.svg',
+                          },
+                      },
+                    'tokens':
+                      {
+                        '3_REVV_0x04DF9b0a':
+                          {
+                            'key': '3_REVV_0x04DF9b0a',
+                            'displayName': 'REVV (Ropsten)',
+                            'standard': 'ERC-1155',
+                            'contractAddress': '0x04DF9b0aE2AFfB622B097c6E63a417c1718e175b',
+                            'gasLimit': '0x11940',
+                            'decimal': 18,
+                            'custodyPrecision': 8,
+                            'displayPrecision': 4,
+                            'metadata':
+                              {
+                                'ticker': 'REVV',
+                                'display':
+                                  {
+                                    'colorCode': '#FE0000',
+                                    'pngIconUrl': 'https://hex-asset-icon.hextech.io/assets/png/REVV.png',
+                                    'svgIconUrl': 'https://hex-asset-icon.hextech.io/assets/svg/REVV.svg',
+                                    'nftCollectionImageUrl': 'https://lh3.googleusercontent.com/W9ZPuD7gMwLFSXqTLB85mBZr1cI3Kio_k75HlUIMm6n7TMjcP-MPamwidyt1uEWglkr_RCY7Ox1FmHYVkXFv9c25aXgIyzZ5dbBN3A=s168',
+                                    'nftCollectionBackgroundImageUrl': 'https://lh3.googleusercontent.com/AHgeSpHo2F-tjXOQ6iJeJIUi3wAlAKSgk2l7JiERaYy9piuQ_D23-eXgZ8XehAVMtSgVzMfG14DZEiJwuFEUHgaMOLg-eMogHWeCkw=h600',
+                                  },
+                              },
+                          },
+                      },
+                  },
+                '4':
+                  {
+                    'chainName': 'Rinkeby',
+                    'chainID': '4',
+                    'type': 'TESTNET',
+                    'minBlockConfirmation': 5,
+                    'smartContractUrl': 'https://rinkeby.etherscan.io/token/',
+                    'addressUrl': 'https://rinkeby.etherscan.io/address/',
+                    'txUrl': 'https://rinkeby.etherscan.io/tx/',
+                    'network':
+                      {
+                        'chainalysisNetwork': 'Ethereum',
+                        'networkColor': '#627EEA',
+                        'pngNetworkIconUrl': 'https://hex-asset-icon.hextech.io/assets/png/ETH.png',
+                      },
+                    'native':
+                      {
+                        'key': '4_ETH',
+                        'displayName': 'Ethereum (Rinkeby)',
+                        'gasLimit': '0x5208',
+                        'decimal': 18,
+                        'custodyPrecision': 8,
+                        'displayPrecision': 4,
+                        'ticker': 'ETH',
+                        'display':
+                          {
+                            'colorCode': '#627eea',
+                            'pngIconUrl': 'https://hex-asset-icon.hextech.io/assets/png/ETH.png',
+                            'svgIconUrl': 'https://hex-asset-icon.hextech.io/assets/svg/ETH.svg',
+                          },
+                      },
+                    'tokens':
+                      {
+                        '4_DOSE_0x3f433c35':
+                          {
+                            'key': '4_DOSE_0x3f433c35',
+                            'displayName': 'DOSE (Rinkeby)',
+                            'standard': 'ERC-20',
+                            'contractAddress': '0x3f433c351E5C2b920568f776EF0C15D52A02e5Ed',
+                            'gasLimit': '0x11940',
+                            'decimal': 18,
+                            'custodyPrecision': 8,
+                            'displayPrecision': 4,
+                            'metadata':
+                              {
+                                'ticker': 'DOSE',
+                                'display':
+                                  {
+                                    'colorCode': '#FC7D16',
+                                    'pngIconUrl': 'https://hex-asset-icon.hextech.io/assets/png/DOSE.png',
+                                    'svgIconUrl': 'https://hex-asset-icon.hextech.io/assets/svg/DOSE.svg',
+                                  },
+                              },
+                          },
+                        '4_GSNR_0x26d971c3':
+                          {
+                            'key': '4_GSNR_0x26d971c3',
+                            'displayName': 'GF Semi NFT (Rinkeby)',
+                            'standard': 'ERC-1155',
+                            'contractAddress': '0x26d971c34806894B7c2A74627e0b993AE2C3Be5A',
+                            'gasLimit': '0x11940',
+                            'decimal': 18,
+                            'metadata':
+                              {
+                                'ticker': 'GSNR',
+                                'display':
+                                  {
+                                    'colorCode': '#B35160',
+                                    'pngIconUrl': 'https://hex-asset-icon.hextech.io/assets/png/default.png',
+                                    'svgIconUrl': 'https://hex-asset-icon.hextech.io/assets/svg/default.svg',
+                                  },
+                              },
+                          },
+                        '4_USDC_0xeb8f08a9':
+                          {
+                            'key': '4_USDC_0xeb8f08a9',
+                            'displayName': 'USD Coin (Rinkeby)',
+                            'standard': 'ERC-20',
+                            'contractAddress': '0xeb8f08a975ab53e34d8a0330e0d34de942c95926',
+                            'gasLimit': '0x11940',
+                            'decimal': 6,
+                            'custodyPrecision': 6,
+                            'displayPrecision': 4,
+                            'metadata':
+                              {
+                                'ticker': 'USDC',
+                                'display':
+                                  {
+                                    'colorCode': '#2775ca',
+                                    'pngIconUrl': 'https://hex-asset-icon.hextech.io/assets/png/USDC%20ERC-20.png',
+                                    'svgIconUrl': 'https://hex-asset-icon.hextech.io/assets/svg/USDC%20ERC-20.svg',
+                                  },
+                              },
+                          },
+                      },
+                  },
+                '80001':
+                  {
+                    'chainName': 'Mumbai',
+                    'chainID': '80001',
+                    'type': 'TESTNET',
+                    'minBlockConfirmation': 5,
+                    'smartContractUrl': 'https://mumbai.polygonscan.com/token/',
+                    'addressUrl': 'https://mumbai.polygonscan.com/address/',
+                    'txUrl': 'https://mumbai.polygonscan.com/tx/',
+                    'network':
+                      {
+                        'chainalysisNetwork': 'Polygon',
+                        'networkColor': '#7B3FE4',
+                        'pngNetworkIconUrl': 'https://hex-asset-icon.hextech.io/assets/png/MATIC.png',
+                      },
+                    'native':
+                      {
+                        'key': '80001_MATIC',
+                        'displayName': 'Polygon (Mumbai)',
+                        'gasLimit': '0x5208',
+                        'decimal': 18,
+                        'custodyPrecision': 8,
+                        'displayPrecision': 4,
+                        'ticker': 'MATIC',
+                        'display':
+                          {
+                            'colorCode': '#B35160',
+                            'pngIconUrl': 'https://hex-asset-icon.hextech.io/assets/png/MATIC.png',
+                            'svgIconUrl': 'https://hex-asset-icon.hextech.io/assets/svg/MATIC.svg',
+                          },
+                      },
+                    'tokens':
+                      {
+                        '80001_DUSTP_0x8995a88F':
+                          {
+                            'key': '80001_DUSTP_0x8995a88F',
+                            'displayName': 'Dustland Promo (Mumbai)',
+                            'standard': 'ERC-1155',
+                            'contractAddress': '0x8995a88F5D5E5A214fC27D7bA002fB000177f7Bf',
+                            'gasLimit': '0x11940',
+                            'decimal': 18,
+                            'metadata':
+                              {
+                                'ticker': 'DUSTP',
+                                'display':
+                                  {
+                                    'colorCode': '#B35160',
+                                    'pngIconUrl': 'https://hex-asset-icon.hextech.io/assets/png/default.png',
+                                    'svgIconUrl': 'https://hex-asset-icon.hextech.io/assets/svg/default.svg',
+                                  },
+                              },
+                          },
+                        '80001_GNTTM_0x4Aa0CcCf':
+                          {
+                            'key': '80001_GNTTM_0x4Aa0CcCf',
+                            'displayName': 'GF NFT (Mumbai)',
+                            'standard': 'ERC-721',
+                            'contractAddress': '0x4Aa0CcCf4Ab16d593863efC05c79157eAaB0FA83',
+                            'gasLimit': '0x11940',
+                            'decimal': 18,
+                            'metadata':
+                              {
+                                'ticker': 'GNTTM',
+                                'display':
+                                  {
+                                    'colorCode': '#B35160',
+                                    'pngIconUrl': 'https://hex-asset-icon.hextech.io/assets/png/default.png',
+                                    'svgIconUrl': 'https://hex-asset-icon.hextech.io/assets/svg/default.svg',
+                                  },
+                              },
+                          },
+                        '80001_REVVM_0xc452E413':
+                          {
+                            'key': '80001_REVVM_0xc452E413',
+                            'displayName': 'REVV Motorsport Inventory (Mumbai)',
+                            'standard': 'ERC-1155',
+                            'contractAddress': '0xc452E41395F455fa943c50495296165bE879427E',
+                            'gasLimit': '0x11940',
+                            'decimal': 18,
+                            'metadata':
+                              {
+                                'ticker': 'REVVM',
+                                'display':
+                                  {
+                                    'colorCode': '#FE0000',
+                                    'pngIconUrl': 'https://hex-asset-icon.hextech.io/assets/png/default.png',
+                                    'svgIconUrl': 'https://hex-asset-icon.hextech.io/assets/svg/default.svg',
+                                  },
+                              },
+                          },
+                        '80001_REVV_0x736DF5c1':
+                          {
+                            'key': '80001_REVV_0x736DF5c1',
+                            'displayName': 'REVV (Polygon)',
+                            'standard': 'ERC-20',
+                            'contractAddress': '0x736DF5c1dB6eB9224c10bDF2A5bC65CAb653Fdb8',
+                            'gasLimit': '0x11940',
+                            'decimal': 18,
+                            'custodyPrecision': 8,
+                            'displayPrecision': 4,
+                            'metadata':
+                              {
+                                'ticker': 'REVV',
+                                'display':
+                                  {
+                                    'colorCode': '#FE0000',
+                                    'pngIconUrl': 'https://hex-asset-icon.hextech.io/assets/png/REVV.png',
+                                    'svgIconUrl': 'https://hex-asset-icon.hextech.io/assets/svg/REVV.svg',
+                                    'nftCollectionImageUrl': 'https://lh3.googleusercontent.com/W9ZPuD7gMwLFSXqTLB85mBZr1cI3Kio_k75HlUIMm6n7TMjcP-MPamwidyt1uEWglkr_RCY7Ox1FmHYVkXFv9c25aXgIyzZ5dbBN3A=s168',
+                                    'nftCollectionBackgroundImageUrl': 'https://lh3.googleusercontent.com/AHgeSpHo2F-tjXOQ6iJeJIUi3wAlAKSgk2l7JiERaYy9piuQ_D23-eXgZ8XehAVMtSgVzMfG14DZEiJwuFEUHgaMOLg-eMogHWeCkw=h600',
+                                  },
+                              },
+                          },
+                        '80001_USDC_0xe6b8a5CF':
+                          {
+                            'key': '80001_USDC_0xe6b8a5CF',
+                            'displayName': 'USD Coin (Mumbai)',
+                            'standard': 'ERC-20',
+                            'contractAddress': '0xe6b8a5CF854791412c1f6EFC7CAf629f5Df1c747',
+                            'gasLimit': '0x11940',
+                            'decimal': 6,
+                            'custodyPrecision': 6,
+                            'displayPrecision': 4,
+                            'metadata':
+                              {
+                                'ticker': 'USDC',
+                                'display':
+                                  {
+                                    'colorCode': '#2775ca',
+                                    'pngIconUrl': 'https://hex-asset-icon.hextech.io/assets/png/USDC%20ERC-20.png',
+                                    'svgIconUrl': 'https://hex-asset-icon.hextech.io/assets/svg/USDC%20ERC-20.svg',
+                                  },
+                              },
+                          },
+                      },
+                  },
+              },
+          }
+
+  schemas:
+    mtz_tx_history_GetEventsByTxHashRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcBase'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              enum:
+                - mtz_tx_history_GetEventsByTxHash
+            params:
+              type: object
+              required:
+                - txHash
+              properties:
+                txHash:
+                  type: string
+          example: |
+            {
+              "jsonrpc": "2.0",
+              "id": "0",
+              "method": "mtz_tx_history_GetEventsByTxHash"
+              "params":{
+                "txHash":"0x04f2f06dfdc956b13e6b8a94afc13544a509f4aa44b536468cc9aae150b5bdb8"}
+            }
+    mtz_tx_history_GetEventsByTxHashResponse:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcResponse'
+        - type: object
+          required:
+            - result
+          properties:
+            result:
+              type: array
+              items:
+                $ref: '#/components/schemas/TxHistoryJsonRpcResult'
+    mtz_tx_history_GetEventDetailsByTxHashRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcBase'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              enum:
+                - mtz_tx_history_GetEventDetailsByTxHash
+            params:
+              type: object
+              required:
+                - txHash
+              properties:
+                txHash:
+                  type: string
+          example: |
+            {
+              "jsonrpc": "2.0",
+              "id": "0",
+              "method": "mtz_tx_history_GetEventDetailsByTxHash"
+              "params":{
+                "txHash":"0x04f2f06dfdc956b13e6b8a94afc13544a509f4aa44b536468cc9aae150b5bdb8"}
+            }
+    mtz_tx_history_GetEventDetailsByTxHashResponse:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcResponse'
+        - type: object
+          required:
+            - result
+          properties:
+            result:
+              type: object
+              $ref: '#/components/schemas/TxHistoryJsonRpcResult'
+
+    mtz_tx_history_GetTopNTransactionsRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcBase'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              enum:
+                - mtz_tx_history_GetTopNTransactions
+            params:
+              type: object
+              required:
+                - eventsNumber
+              properties:
+                eventsNumber:
+                  type: integer
+                chainId:
+                  type: string
+          example: |
+            {
+                "id": "2",
+                "jsonrpc": "2.0",
+                "method": "mtz_tx_history_GetTopNTransactions",
+                "params": {
+                    "chainId": "80001",
+                    "eventsNumber": 10,
+                }
+            }
+    mtz_tx_history_GetTopNTransactionsResponse:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcResponse'
+        - type: object
+          required:
+            - result
+          properties:
+            result:
+              type: array
+              items:
+                $ref: '#/components/schemas/TxHistoryJsonRpcResult'
+    assetMaster_getAssetsRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcBase'
+        - type: object
+          required:
+            - method
+          properties:
+            method:
+              type: string
+              enum: ['assetMaster_getAssets']
+              example: |
+                {
+                  "jsonrpc": "2.0",
+                  "id": "0",
+                  "method": "assetMaster_getAssets"
+                }
+    assetMaster_getAssetsResponse:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcResponse'
+        - type: object
+          required:
+            - result
+          properties:
+            result:
+              type: object
+              required:
+                - version
+                - data
+              properties:
+                data:
+                  type: object
+                version:
+                  type: string
+    # ================================ #
+    mtz_asset_metadata_cache_GetAssetMetadataRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcBase'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              enum: ['mtz_asset_metadata_cache_GetAssetMetadata']
+            params:
+              type: object
+              required:
+                - chainId
+                - contractAddress
+                - tokenId
+              properties:
+                chainId:
+                  type: string
+                contractAddress:
+                  type: string
+                tokenId:
+                  type: string
+          example: |
+            {
+              "jsonrpc": "2.0",
+              "id": "1",
+              "method": "mtz_asset_metadata_cache_GetAssetMetadata",
+              "params": {
+                "chainId": "80001",
+                "contractAddress": "0xa1a6bbb60bf86bd70060a303debe4633726cda55",
+                "tokenId": "107"
+              }
+            }
+    mtz_asset_metadata_cache_GetAssetMetadataResponse:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcResponse'
+        - type: object
+          required:
+            - result
+            - params
+          properties:
+            result:
+              type: object
+              required:
+                - symbol
+                - updatedTime
+                - data
+                - contractAddress
+                - owner
+                - tokenId
+                - chainId
+                - tokenStandard
+                - createdTime
+              properties:
+                symbol:
+                  type: string
+                  description: Token Symbol
+                updatedTime:
+                  type: string
+                  description: The time at which the NFT metadata was last updated
+                data:
+                  type: string
+                  description: The latest NFT metadata
+                contractAddress:
+                  type: string
+                owner:
+                  type: string
+                  description: Owner Address
+                tokenId:
+                  type: string
+                chainId:
+                  type: string
+                tokenStandard:
+                  type: string
+                  description: ERC-1155 or ERC-721
+                createdTime:
+                  type: string
+                  description: Creation time of NFT transaction
+          example: |
+            {
+              "jsonrpc": "2.0",
+              "id": "1",
+              "result": {
+                  "symbol": "REVVM",
+                  "updatedTime": "2022-07-19T12:43:49.472Z",
+                  "data": "{\"core\":{\"chassisNumber\":\"29537\",\"item\":\"1\",\"livery\":\"47\",\"handling\":\"100\",\"acceleration\":\"100\",\"topSpeed\":\"100\",\"weight\":\"1464\",\"year\":\"121\",\"rarity\":\"5\",\"class\":\"1\",\"collection\":\"45\",\"manufacturer\":\"1\",\"type\":\"1\",\"nfFlag\":\"1\"},\"type\":\"Car\",\"manufacturer\":\"REVV Motorsport\",\"collection\":\"Odaily\",\"class\":\"Sports Saloon\",\"rarity\":\"Common\",\"year\":2021,\"racing_topSpeed\":100,\"racing_acceleration\":100,\"racing_handling\":100,\"name\":\"REVV Ambition\",\"description\":\"The REVV Ambition is a Sports Saloon, with a balanced mix of speed, acceleration and handling. They are a solid choice for any driver getting started, and will be comfortable taking on any circuit. \",\"image\":\"https://ipfs-assets.animocabrands.com/REVV-1_1_1_47.png\",\"id\":\"57910179610855902643140526721588920884948204639256480166906838582677720822625\",\"attributes\":[{\"trait_type\":\"rarity\",\"value\":\"Common\"},{\"trait_type\":\"class\",\"value\":\"Sports Saloon\"},{\"trait_type\":\"manufacturer\",\"value\":\"REVV Motorsport\"},{\"trait_type\":\"type\",\"value\":\"Car\"},{\"trait_type\":\"collection\",\"value\":\"Odaily\"},{\"trait_type\":\"weight\",\"value\":\"1464kg\"},{\"trait_type\":\"chassis_number\",\"value\":\"29537\"},{\"display_type\":\"boost_number\",\"trait_type\":\"top_speed\",\"value\":900,\"max_value\":1001},{\"display_type\":\"boost_number\",\"trait_type\":\"acceleration\",\"value\":500,\"max_value\":1001},{\"display_type\":\"boost_number\",\"trait_type\":\"handling\",\"value\":100,\"max_value\":1001}],\"external_url\":\"https://revvracing.com\"}",
+                  "contractAddress": "0xa1a6bbb60bf86bd70060a303debe4633726cda55",
+                  "owner": "0xd92d917554f2b53aaa6395722fe52cc5394ed183",
+                  "tokenId": "107",
+                  "chainId": "80001",
+                  "tokenStandard": "ERC-721",
+                  "createdTime": "2022-07-21T12:43:49.472Z"
+                }
+            }
+
+    # ================================ #
+    mtz_asset_metadata_cache_GetAssetMetadataBatchRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcBase'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              enum:
+                - mtz_asset_metadata_cache_GetAssetMetadataBatch
+            params:
+              type: array
+              items:
+                type: object
+                properties:
+                  chainId:
+                    type: string
+                  contractAddress:
+                    type: string
+                  tokenId:
+                    type: string
+          example: |
+            {
+              "jsonrpc": "2.0",
+              "id": "1",
+              "method": "mtz_asset_metadata_cache_GetAssetMetadataBatch",
+              "params": [ {
+                "chainId": "80001",
+                "contractAddress": "0xa1a6bbb60bf86bd70060a303debe4633726cda55",
+                "tokenId": "107"
+              } ]
+            }
+
+    mtz_asset_metadata_cache_GetAssetMetadataBatchResponse:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcResponse'
+        - type: object
+          required:
+            - result
+          properties:
+            result:
+              type: array
+              items:
+                type: object
+                required:
+                  - updatedTime
+                  - data
+                  - contractAddress
+                  - owner
+                  - tokenId
+                  - chainId
+                  - tokenStandard
+                  - symbol
+                  - createdTime
+                properties:
+                  updatedTime:
+                    type: string
+                    description: The time at which the NFT metadata was last updated
+                  data:
+                    type: string
+                    description: The latest NFT metadata
+                  contractAddress:
+                    type: string
+                  owner:
+                    type: string
+                    description: Owner Address
+                  tokenId:
+                    type: string
+                  chainId:
+                    type: string
+                  tokenStandard:
+                    type: string
+                    description: ERC-1155 or ERC-721
+                  symbol:
+                    type: string
+                    description: Token Symbol
+                  createdTime:
+                    type: string
+                    description: Creation time of NFT transaction
+          example: |
+            {
+              "jsonrpc": "2.0",
+              "id": "1",
+              "error": {
+                "code": 0,
+                "message": "string"
+              },
+              "result": [ {
+                  "updatedTime": "2022-07-19T12:43:49.472Z",
+                  "data": "{\"core\":{\"chassisNumber\":\"29537\",\"item\":\"1\",\"livery\":\"47\",\"handling\":\"100\",\"acceleration\":\"100\",\"topSpeed\":\"100\",\"weight\":\"1464\",\"year\":\"121\",\"rarity\":\"5\",\"class\":\"1\",\"collection\":\"45\",\"manufacturer\":\"1\",\"type\":\"1\",\"nfFlag\":\"1\"},\"type\":\"Car\",\"manufacturer\":\"REVV Motorsport\",\"collection\":\"Odaily\",\"class\":\"Sports Saloon\",\"rarity\":\"Common\",\"year\":2021,\"racing_topSpeed\":100,\"racing_acceleration\":100,\"racing_handling\":100,\"name\":\"REVV Ambition\",\"description\":\"The REVV Ambition is a Sports Saloon, with a balanced mix of speed, acceleration and handling. They are a solid choice for any driver getting started, and will be comfortable taking on any circuit. \",\"image\":\"https://ipfs-assets.animocabrands.com/REVV-1_1_1_47.png\",\"id\":\"57910179610855902643140526721588920884948204639256480166906838582677720822625\",\"attributes\":[{\"trait_type\":\"rarity\",\"value\":\"Common\"},{\"trait_type\":\"class\",\"value\":\"Sports Saloon\"},{\"trait_type\":\"manufacturer\",\"value\":\"REVV Motorsport\"},{\"trait_type\":\"type\",\"value\":\"Car\"},{\"trait_type\":\"collection\",\"value\":\"Odaily\"},{\"trait_type\":\"weight\",\"value\":\"1464kg\"},{\"trait_type\":\"chassis_number\",\"value\":\"29537\"},{\"display_type\":\"boost_number\",\"trait_type\":\"top_speed\",\"value\":100,\"max_value\":1001},{\"display_type\":\"boost_number\",\"trait_type\":\"acceleration\",\"value\":100,\"max_value\":1001},{\"display_type\":\"boost_number\",\"trait_type\":\"handling\",\"value\":100,\"max_value\":1001}],\"external_url\":\"https://revvracing.com\"}",
+                  "contractAddress": "0xa1a6bbb60bf86bd70060a303debe4633726cda55",
+                  "owner": "0xd92d917554f2b53aaa6395722fe52cc5394ed183",
+                  "tokenId": "107",
+                  "chainId": "80001",
+                  "tokenStandard": "ERC-721"
+                  "symbol": "SYN",
+                  "createdTime": "2022-07-21T12:43:49.472Z"
+              } ]
+            }
+
+    # ================================ #
+
+    mtz_evaluatorGetPricesRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcBase'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              enum: ['mtz_evaluatorGetPrices']
+            params:
+              type: array
+              items:
+                type: string
+          example: |
+            {
+              "jsonrpc": "2.0",
+              "id": "0",
+              "method": "mtz_bk_GetBalancesRequest",
+              "params": ["80001_MATIC", "80001_REVV_0x736DF5c1"]
+            }
+
+    mtz_evaluatorGetPricesResponse:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcResponse'
+        - type: object
+          required:
+            - result
+          properties:
+            result:
+              type: array
+              items:
+                type: object
+                properties:
+                  assetKey:
+                    type: string
+                    example: "1_ETH_0x12345678"
+                  chainID:
+                    type: string
+                    example: "1"
+                  assetTicker:
+                    type: string
+                    example: "ETH"
+                  price:
+                    type: string
+                    example: "1.01"
+                  platformCurrency:
+                    type: string
+                    example: "ETH"
+                  sourceTicker:
+                    type: string
+                    example: "ETH"
+                  source:
+                    type: string
+                    description: "nomics"
+                  createdAt:
+                    type: string
+                    format: datetime
+                    example: "2022-08-17T06:42:42.615824582Z"
+
+    # ================================ #
+    mtz_wallet_getOrCreateAddressesRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcBase'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              enum:
+                - mtz_wallet_getOrCreateAddresses
+            params:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                type: string
+                title: chainId
+                example: '3'
+
+    mtz_wallet_getOrCreateAddressesResponse:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcBase'
+        - type: object
+          required:
+            - result
+          properties:
+            result:
+              oneOf:
+                - type: array
+                  items:
+                    type: object
+                    required:
+                      - address
+                      - chain_id
+                    properties:
+                      address:
+                        type: string
+                      chain_id:
+                        type: string
+                - type: object
+                  required:
+                    - address
+                    - chain_id
+                  properties:
+                    address:
+                      type: string
+                    chain_id:
+                      type: string
+                  example: |
+                    {
+                    "jsonrpc": "2.0",
+                    "id": "0",
+                    "method": "mtz_tx_history_GetEventDetailsByTxHash"
+                    "params":{
+                    "txHash":"0x04f2f06dfdc956b13e6b8a94afc13544a509f4aa44b536468cc9aae150b5bdb8"}
+                    }
+    mtz_bk_GetBalancesRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcBase'
+        - type: object
+          required:
+            - method
+          properties:
+            method:
+              type: string
+              enum: ['mtz_bk_GetBalancesRequest']
+          example: |
+            {
+              "jsonrpc": "2.0",
+              "id": "0",
+              "method": "mtz_bk_GetBalancesRequest",
+            }
+
+    mtz_bk_GetBalancesResponse:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcResponse'
+        - type: object
+          required:
+            - result
+          properties:
+            result:
+              type: array
+              items:
+                type: object
+                required:
+                  - chainId
+                  - balance
+                properties:
+                  entityId:
+                    type: string
+                  chainId:
+                    type: string
+                  assetId:
+                    type: string
+                  nftTokenId:
+                    type: string
+                  balance:
+                    type: string
+                  address:
+                    type: string
+                  assetTicker:
+                    type: string
+          example:
+            {
+              {
+                'jsonrpc': '2.0',
+                'id': '33',
+                'result':
+                  [
+                    {
+                      'entityId': '8a218199-fb3b-4863-8013-a7d4b7c49f8b',
+                      'chainId': '80001',
+                      'address': '0x9bc2729c2cfdc94378a9adb681455d1d94c12c5f',
+                      'assetTicker': 'MATICmum',
+                      'assetId': '80001_MATIC',
+                      'balance': '20000000000000000000',
+                      'nftTokenId': '8171',
+                    },
+                    {
+                      'entityId': '6e2b242f-778e-4e6b-ab97-d552415051b1',
+                      'chainId': '80001',
+                      'address': '0xfe9006f6cc319fc0ebba40cbd2d3e92a73c6ec3c',
+                      'assetTicker': '80001_GNTTM_0x4Aa0CcCf',
+                      'assetId': '80001_GNTTM_0x4Aa0CcCf',
+                      'nftTokenId': '8171',
+                      'balance': '1',
+                    },
+                    {
+                      'entityId': '6e2b242f-778e-4e6b-ab97-d552415051b1',
+                      'chainId': '80001',
+                      'address': '0xfe9006f6cc319fc0ebba40cbd2d3e92a73c6ec3c',
+                      'assetTicker': '80001_GNTTM_0x4Aa0CcCf',
+                      'assetId': '80001_GNTTM_0x4Aa0CcCf',
+                      'nftTokenId': '8172',
+                      'balance': '1',
+                    },
+                  ],
+              },
+            }
+    # ================================ #
+
+    mtz_bk_GetBalancesByAssetIdsResponse:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcResponse'
+        - type: object
+
+    mtz_bk_GetBalancesByAssetIdsRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcBase'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              enum: ['mtz_bk_GetBalancesByAssetIdsRequest']
+            params:
+              type: object
+              properties:
+                assetIds:
+                  type: array
+                  items:
+                    type: string
+                  example: ['4_ETH', '80001_USDC_0xe6b8a5CF']
+                  description: |
+                    The asset ID that we mean here is the one present in the AMD JSON `id` field.
+                aggregateNfts:
+                  default: false
+                  type: boolean
+                  description: |
+                    Let's say you have some NFTs in your balance, like maybe 1 of ERC-1155 tokenId=1 and 5 of ERC-1155 tokenId=2.
+                    If you leave the default (false) for this argument you're going to get a balance response saying
+                    that you have, well, 1 of ERC-1155 tokenId=1 and 5 of ERC-1155 tokenId=5. Now if you set the argument to true
+                    the balance response will just tell you that you have 6 of ERC-1155 tokens.
+          example: |
+            {
+              "jsonrpc": "2.0",
+              "id": 1,
+              "method": "mtz_bk_GetBalancesByAssetIdsRequest",
+              "params": {
+                "chainId": "80001"
+              }
+            }
+
+    # ================================ #
+
+    mtz_bk_GetBalanceByChainIdRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcBase'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              enum: ['mtz_bk_GetBalanceByChainIdRequest']
+            params:
+              type: object
+              properties:
+                chainId:
+                  type: string
+          example: |
+            {
+              "jsonrpc": "2.0",
+              "id": "0",
+              "method": "mtz_bk_GetBalanceByChainIdRequest",
+              "params": {
+                "chainId": "80001"
+              }
+            }
+
+    mtz_bk_GetBalanceByChainIdResponse:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcResponse'
+        - type: object
+          required:
+            - result
+          properties:
+            result:
+              type: object
+              required:
+                - chainId
+                - balance
+              properties:
+                chainId:
+                  type: string
+                balance:
+                  type: string
+          example:
+            {
+              {
+                'jsonrpc': '2.0',
+                'id': '33',
+                'result':
+                  [
+                    {
+                      'entityId': '8a218199-fb3b-4863-8013-a7d4b7c49f8b',
+                      'chainId': '80001',
+                      'address': '0x9bc2729c2cfdc94378a9adb681455d1d94c12c5f',
+                      'assetTicker': 'MATICmum',
+                      'assetId': '80001_MATIC',
+                      'balance': '20000000000000000000',
+                    },
+                    {
+                      'entityId': '6e2b242f-778e-4e6b-ab97-d552415051b1',
+                      'chainId': '80001',
+                      'address': '0xfe9006f6cc319fc0ebba40cbd2d3e92a73c6ec3c',
+                      'assetTicker': '80001_GNTTM_0x4Aa0CcCf',
+                      'assetId': '80001_GNTTM_0x4Aa0CcCf',
+                      'nftTokenId': '8171',
+                      'balance': '1',
+                    },
+                    {
+                      'entityId': '6e2b242f-778e-4e6b-ab97-d552415051b1',
+                      'chainId': '80001',
+                      'address': '0xfe9006f6cc319fc0ebba40cbd2d3e92a73c6ec3c',
+                      'assetTicker': '80001_GNTTM_0x4Aa0CcCf',
+                      'assetId': '80001_GNTTM_0x4Aa0CcCf',
+                      'nftTokenId': '8172',
+                      'balance': '1',
+                    },
+                  ],
+              },
+            }
+    mtz_asset_metadata_cache_UpdateAssetMetadataRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcBase'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              enum:
+                - mtz_asset_metadata_cache_UpdateAssetMetadata
+            params:
+              type: object
+              required:
+                - chainId
+                - contractAddress
+                - tokenId
+              properties:
+                chainId:
+                  type: string
+                contractAddress:
+                  type: string
+                tokenId:
+                  type: string
+          example:
+            {
+              'jsonrpc': '2.0',
+              'id': '1',
+              'method': 'mtz_asset_metadata_cache_UpdateAssetMetadata',
+              'params':
+                {
+                  'chainId': '80001',
+                  'contractAddress': '0xa1a6bbb60bf86bd70060a303debe4633726cda55',
+                  'tokenId': '107',
+                },
+            }
+    mtz_asset_metadata_cache_UpdateAssetMetadataResponse:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcResponse'
+        - type: object
+          required:
+            - result
+          properties:
+            result:
+              type: object
+              example: null; (Returns null response when the metadata has been refreshed. Need to call different endpoint to fetch data.)
+          example: { 'jsonrpc': '2.0', 'id': '1', 'error': { 'code': 0, 'message': 'string' }, 'result': null }
+
+    # ================================ #
+    JsonRpcBase:
+      type: object
+      required:
+        - jsonrpc
+        - id
+      properties:
+        jsonrpc:
+          type: string
+          default: '2.0'
+        id:
+          type: string
+
+    # ================================ #
+
+    JsonRpcResponse:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcBase'
+        - type: object
+          properties:
+            error:
+              type: object
+              properties:
+                code:
+                  type: integer
+                message:
+                  type: string
+
+    # ================================ #
+
+    TxHistoryJsonRpcResult:
+      allOf:
+        - type: object
+          required:
+            - from
+            - to
+            - hash
+            - createdAt
+            - transactionType
+            - status
+            - value
+            - assetTicker
+            - chainId
+            - relevantAddress
+          properties:
+            from:
+              type: string
+            to:
+              type: string
+            hash:
+              type: string
+            createdAt:
+              type: string
+            transactionType:
+              schema:
+              $ref: '#/components/schemas/TransactionType'
+            status:
+              type: string
+            value:
+              type: string
+            assetTicker:
+              type: string
+            chainId:
+              type: string
+            relevantAddress:
+              type: array
+              items:
+                type: string
+            confirmationCount:
+              type: integer
+            spec:
+              type: string
+              enum: ['ERC-20', 'ERC-721', 'ERC-1155']
+            contractAddress:
+              type: string
+            erc20:
+              type: object
+              required:
+                - symbol
+                - tokenTransfered
+                - decimal
+              properties:
+                symbol:
+                  type: string
+                  description: 'Symbol, like REVV'
+                  example: '1'
+                tokenTransfered:
+                  type: string
+                  description: 'tokenTransfered'
+                  example: '100000'
+                decimal:
+                  type: number
+                  description: 'Decimal using in a token'
+                  example: 6
+            erc721:
+              type: object
+              required:
+                - tokenID
+                - tokenURI
+                - contractAddress
+              properties:
+                tokenID:
+                  type: string
+                  description: 'Token ID'
+                  example: '1'
+                tokenURI:
+                  type: string
+                  description: 'Token URI'
+                  example: 'https://asset-token-metadata-stg.revvmotorsport.com/57910179610855902643140526721588920884948204639256480166906838582677720822625'
+                contractAddress:
+                  type: string
+                  description: 'Contract Address'
+                  example: '0x1234567890123456789012345678901234567890'
+            erc1155:
+              type: object
+              properties:
+                token:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                      - symbol
+                      - tokenTransfered
+                      - decimal
+                    properties:
+                      symbol:
+                        type: string
+                        description: 'Symbol, like REVV'
+                        example: '1'
+                      tokenTransfered:
+                        type: string
+                        description: 'tokenTransfered'
+                        example: '100000'
+                      decimal:
+                        type: number
+                        description: 'Decimal using in a token'
+                        example: 6
+                  description: 'ERC20 Tokens'
+                  example:
+                    [
+                      { symbol: 'USDC', tokenTransfered: '100000', decimal: 6 },
+                      { symbol: 'REVV', tokenTransfered: '20000000', decimal: 18 },
+                    ]
+                nft:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                      - tokenId
+                      - tokenURI
+                    properties:
+                      tokenId:
+                        type: string
+                        description: 'token Id'
+                        example: '101'
+                      tokenURI:
+                        type: string
+                        description: 'tokenURI'
+                        example: 'http://www.revv.com/1.json'
+                    description: 'nft related items'
+                    example:
+                      [
+                        { tokenid: '101', tokenURI: http://www.revv.com/1.json },
+                        { tokenId:'102', tokenURI: http://www.revv.com/2.json },
+                      ]
+                contractAddress:
+                  type: string
+                  description: 'Contract Address'
+                  example: '0x123456789012345667889900'
+                data:
+                  type: string
+                  description: 'Data'
+                  example: '0x00'
+          example: |
+            {
+              "from": "0x3f009302978cc82c6daf06aac49b5716be79ccb9",
+              "to": "0xc47dac9368c39964a45b74ae9d507fbb1d6a4c38",
+              "hash": "0x38db0814f70a0a42c97cdac9b8a94b67a778847096ab1ed1aa91e089099aaf58",
+              "createdAt": "2022-06-21T05:57:43.331Z",
+              "transactionType": "tokentransfer-deposit",
+              "status": "completed",
+              "value": "0x00",
+              "assetTicker": "maticmum",
+              "relevantAddress": [
+                  "0xc47DAc9368c39964A45b74aE9D507Fbb1d6A4c38"
+              ],
+              "chainId": "80001",
+              "spec": "ERC-20",
+              "contractAddress":"0xe6b8a5CF854791412c1f6EFC7CAf629f5Df1c747",
+              "erc20": {
+                  "symbol": "USDC",
+                  "tokenTransfered": "0x7530",
+                  "decimal": 6
+              }
+            },
+            {
+              "from": "0xd92d917554f2b53aaa6395722fe52cc5394ed183",
+              "to": "0x0de24844f15f7f6caa12ac9e0bc08829d0fd9179",
+              "hash": "0x7181c73d781b61a5b30ff110a41b0eb51c493f1bc00f4c67e52a8cdb13005104",
+              "createdAt": "2022-06-24T05:29:13.113Z",
+              "transactionType": "tokentransfer-deposit",
+              "status": "completed",
+              "value": "0x00",
+              "assetTicker": "maticmum",
+              "relevantAddress": [
+                  "0xD92d917554f2B53Aaa6395722FE52cC5394ED183"
+              ],
+              "chainId": "80001",
+              "spec": "ERC-721",
+              "contractAddress": "0x676FFacc3d95a1c179C4F2f8784D9e6cb3c45632",
+              "erc721": {
+                  "tokenID": "104",
+                  "tokenURI": "https://ipfs.io/ipfs/bafybeieftzmyt4ibcxe4ebz6jyagcwarijmq7ng5vbg5x454tkng5wsmzq/3.json",
+                  "contractAddress": "0x676FFacc3d95a1c179C4F2f8784D9e6cb3c45632"
+              }
+            }
+
+    # ================================ #
+
+    TransactionType:
+      type: string
+      enum:
+        [
+          deposit,
+          withdrawal,
+          transfer,
+          staking_stake,
+          staking_unstake,
+          staking_restake,
+          staking_unbond,
+          staking_claim_reward defi_supply,
+          defi_redeem,
+          defi_borrow,
+          defi_claim_reward,
+          safe_batch_transfer_from,
+          safe_transfer_from,
+          tokentransfer-deposit,
+          tokentransfer-withdrawal,
+          tokentransfer-transfer,
+          tokentransfer-staking_stake,
+          tokentransfer-staking_unstake,
+          tokentransfer-staking_restake,
+          tokentransfer-staking_unbond,
+          tokentransfer-staking_claim_reward defi_supply,
+          tokentransfer-defi_redeem,
+          tokentransfer-defi_borrow,
+          tokentransfer-defi_claim_reward,
+          tokentransfer-safe_batch_transfer_from,
+          tokentransfer-safe_transfer_from,
+        ]

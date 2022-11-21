@@ -1,0 +1,7 @@
+# Ignore artifacts:
+local_mock_server
+
+*.yml
+*.yaml
+
+public/meta.json

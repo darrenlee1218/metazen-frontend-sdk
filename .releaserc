@@ -1,0 +1,21 @@
+{
+  "branches": ["master"],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    "@semantic-release/gitlab",
+    ["@semantic-release/npm", 
+    {
+      "npmPublish": false
+    }],
+    [
+      "@semantic-release/git",
+      {
+        "assets": ["package.json"],
+        "message": "chore(release): ${nextRelease.version}-${nextRelease.gitHead} \n\n${nextRelease.notes}"
+      }
+    ]
+  ]
+}
+

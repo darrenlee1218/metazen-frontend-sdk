@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TitleWithIconOnTop renders given non-empty layout 1`] = `
+<div
+  className="MuiBox-root css-mzfgik"
+>
+  <div
+    className="MuiBox-root css-1upnith"
+  />
+  <h1
+    className="MuiTypography-root MuiTypography-h1 css-yr8l96-MuiTypography-root"
+  >
+    Signature Request
+  </h1>
+  <h5
+    className="MuiTypography-root MuiTypography-h5 css-14tnc7k-MuiTypography-root"
+  >
+    url-of-game.com
+  </h5>
+</div>
+`;

@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  <div>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium  css-m95ct2-MuiButtonBase-root-MuiButton-root"
+      tabindex="0"
+      type="button"
+    >
+      <h5
+        class="MuiTypography-root MuiTypography-h5 css-ie8d53-MuiTypography-root"
+      >
+        Label
+      </h5>
+      <span
+        class="MuiButton-endIcon MuiButton-iconSizeMedium css-1gnd1fd-MuiButton-endIcon"
+      >
+        <svg
+          fill="none"
+          height="12px"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          width="12px"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6 9L12 15L18 9"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </span>
+    </button>
+    <hr
+      class="MuiDivider-root MuiDivider-fullWidth css-rr7dug-MuiDivider-root"
+    />
+    <div
+      class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-bz4dnt-MuiCollapse-root"
+      data-testid="collapse"
+      style="min-height: 0px;"
+    >
+      <div
+        class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
+      >
+        <div
+          class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
+        >
+          <h1>
+            Child
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BalanceBar renders all the required content given valid props 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiBox-root css-p5x5a2"
+    >
+      <h4
+        class="MuiTypography-root MuiTypography-h4 css-fsl47-MuiTypography-root"
+      >
+        Balance
+      </h4>
+      <div
+        class="MuiBox-root css-69i1ev"
+      >
+        <h2
+          class="MuiTypography-root MuiTypography-h2 css-bvqlkz-MuiTypography-root"
+          data-testid="amount-display"
+        >
+          900 MATIC
+        </h2>
+        <h4
+          class="MuiTypography-root MuiTypography-h4 css-5h7vtp-MuiTypography-root"
+          data-testid="currency-display"
+        >
+          $784.62
+        </h4>
+      </div>
+    </div>
+  </div>
+</body>
+`;

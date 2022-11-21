@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-mq31qy"
+  >
+    <span
+      class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse MuiSkeleton-withChildren MuiSkeleton-fitContent MuiSkeleton-heightAuto css-gedcuj-MuiSkeleton-root"
+    >
+      <span
+        class="MuiBadge-root BaseBadge-root css-1c32n2y-MuiBadge-root"
+      >
+        <div
+          class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1b6koi5-MuiAvatar-root"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiAvatar-fallback css-10mi8st-MuiSvgIcon-root-MuiAvatar-fallback"
+            data-testid="PersonIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+            />
+          </svg>
+        </div>
+        <span
+          class="MuiBadge-badge MuiBadge-standard MuiBadge-anchorOriginTopRight MuiBadge-anchorOriginTopRightCircular MuiBadge-overlapCircular BaseBadge-badge css-6zrg6j-MuiBadge-badge"
+        >
+          <div
+            class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1n5knhj-MuiAvatar-root"
+            data-testid="network-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiAvatar-fallback css-10mi8st-MuiSvgIcon-root-MuiAvatar-fallback"
+              data-testid="PersonIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+              />
+            </svg>
+          </div>
+        </span>
+      </span>
+    </span>
+    <div
+      class="MuiBox-root css-zg1vud"
+    >
+      <div
+        class="MuiBox-root css-qf05oz"
+      >
+        <div
+          class="MuiTypography-root MuiTypography-h2 css-1vsyzh6-MuiTypography-root"
+        >
+          <span
+            class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1h2g3k5-MuiSkeleton-root"
+          />
+        </div>
+        <div
+          class="MuiTypography-root MuiTypography-h2 css-1vsyzh6-MuiTypography-root"
+        >
+          <span
+            class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1h2g3k5-MuiSkeleton-root"
+          />
+        </div>
+      </div>
+      <div
+        class="MuiBox-root css-qf05oz"
+      >
+        <div
+          class="MuiTypography-root MuiTypography-h2 css-1vsyzh6-MuiTypography-root"
+        >
+          <span
+            class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1h2g3k5-MuiSkeleton-root"
+          />
+        </div>
+        <div
+          class="MuiTypography-root MuiTypography-h2 css-1vsyzh6-MuiTypography-root"
+        >
+          <span
+            class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1h2g3k5-MuiSkeleton-root"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

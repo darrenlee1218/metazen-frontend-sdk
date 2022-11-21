@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  <img
+    class="MuiBox-root css-0"
+    src="404.png"
+  />
+</div>
+`;

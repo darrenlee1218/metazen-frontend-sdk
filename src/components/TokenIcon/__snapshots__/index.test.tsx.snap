@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  <span
+    class="MuiBadge-root BaseBadge-root css-1c32n2y-MuiBadge-root"
+  >
+    <div
+      class="MuiAvatar-root MuiAvatar-circular css-21opj1-MuiAvatar-root"
+    >
+      <img
+        class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
+        src="tokenIcon.png"
+      />
+    </div>
+    <span
+      class="MuiBadge-badge MuiBadge-standard MuiBadge-anchorOriginTopRight MuiBadge-anchorOriginTopRightCircular MuiBadge-overlapCircular BaseBadge-badge css-6zrg6j-MuiBadge-badge"
+    >
+      <div
+        class="MuiAvatar-root MuiAvatar-circular css-1ycs6pv-MuiAvatar-root"
+        data-testid="network-icon"
+      >
+        <img
+          class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
+          src="networkIcon.png"
+        />
+      </div>
+    </span>
+  </span>
+</div>
+`;

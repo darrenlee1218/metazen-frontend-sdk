@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Procedural Footer should render a divider if requiredDivider is true 1`] = `
+<div>
+  <hr
+    class="MuiDivider-root MuiDivider-fullWidth css-149q7or-MuiDivider-root"
+  />
+  <div
+    class="MuiBox-root css-ea6zr6"
+  >
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-fullWidth Mui-disabled css-1aej8tm-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+      disabled=""
+      id="mui-1"
+      tabindex="-1"
+      type="button"
+    >
+      Next
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Procedural Footer should render cancel button when onCancel is provided 1`] = `
+<div>
+  <hr
+    class="MuiDivider-root MuiDivider-fullWidth css-149q7or-MuiDivider-root"
+  />
+  <div
+    class="MuiBox-root css-ea6zr6"
+  >
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth css-931uqb-MuiButtonBase-root-MuiButton-root"
+      tabindex="0"
+      type="button"
+    >
+      Cancel
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-fullWidth Mui-disabled css-1aej8tm-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+      disabled=""
+      id="mui-2"
+      tabindex="-1"
+      type="button"
+    >
+      Next
+    </button>
+  </div>
+</div>
+`;

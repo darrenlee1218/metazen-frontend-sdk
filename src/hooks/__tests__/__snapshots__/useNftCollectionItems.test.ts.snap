@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should merge with nftMetadata 1`] = `
+Object {
+  "isLoadTokenError": undefined,
+  "isLoading": undefined,
+  "nftCollectionItems": Array [
+    Object {
+      "balance": "1",
+      "chainId": "0",
+      "contractAddress": "0x0000000000000000000000000000000000000000",
+      "metadata": Object {
+        "tokenId": "1",
+      },
+      "nftTokenId": "1",
+    },
+    Object {
+      "balance": "1",
+      "chainId": "0",
+      "contractAddress": "0x0000000000000000000000000000000000000000",
+      "metadata": Object {
+        "tokenId": "2",
+      },
+      "nftTokenId": "2",
+    },
+    Object {
+      "balance": "1",
+      "chainId": "0",
+      "contractAddress": "0x0000000000000000000000000000000000000000",
+      "metadata": undefined,
+      "nftTokenId": "3",
+    },
+  ],
+}
+`;

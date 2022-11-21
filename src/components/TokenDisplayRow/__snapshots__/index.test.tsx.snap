@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  <button
+    class="MuiButtonBase-root MuiCardActionArea-root MuiBox-root css-29ttzx-MuiButtonBase-root-MuiCardActionArea-root"
+    tabindex="0"
+    type="button"
+  >
+    <div
+      class="MuiBox-root css-16bryr0"
+    >
+      <div
+        class="MuiBox-root css-1u6ef5p"
+      >
+        <div
+          class="MuiBox-root css-iiu66e"
+        />
+      </div>
+    </div>
+    <div
+      class="MuiBox-root css-zg1vud"
+    >
+      <div
+        class="MuiBox-root css-qf05oz"
+        data-testid="name-balance-row"
+      >
+        <h2
+          class="MuiTypography-root MuiTypography-h2 css-m3q21w-MuiTypography-root"
+        >
+          Polygon (Mainnet)
+        </h2>
+        <h2
+          class="MuiTypography-root MuiTypography-h2 css-g1bq1m-MuiTypography-root"
+          data-testid="amount-display"
+        >
+          10 MATIC
+        </h2>
+      </div>
+      <div
+        class="MuiBox-root css-qf05oz"
+        data-testid="prices-row"
+      >
+        <h4
+          class="MuiTypography-root MuiTypography-h4 css-5h7vtp-MuiTypography-root"
+          data-testid="currency-display"
+        >
+          $1.0000
+        </h4>
+        <h4
+          class="MuiTypography-root MuiTypography-h4 css-5h7vtp-MuiTypography-root"
+          data-testid="currency-display"
+        >
+          $10.00
+        </h4>
+      </div>
+    </div>
+    <span
+      class="MuiCardActionArea-focusHighlight css-1v2exvi-MuiCardActionArea-focusHighlight"
+    />
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+</div>
+`;
